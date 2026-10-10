@@ -1,12 +1,16 @@
 # Security and privacy
 
-This public portfolio repository intentionally contains no AWS credentials, account IDs, ARNs, S3 bucket names, runtime configuration, verbatim deployed system prompt, or deployable course starter infrastructure.
+This public portfolio excludes AWS credentials, real account and resource identifiers, signed URLs, private deployment configuration, and raw cloud logs. Published evidence is redacted; test customer and order data are fictional.
 
-Before publishing future screenshots or logs:
+Project 1 publishes its behaviour contract and pseudocode, with the deployed prompt omitted. Project 2 publishes the completed educational agent implementation, including its demo system prompt, and example configuration with placeholders. Supplied course backend infrastructure and product-catalog files are not redistributed.
 
-1. remove account names and 12-digit AWS account IDs;
-2. remove ARNs, bucket names, session identifiers, and signed URLs;
-3. never commit `.env`, AWS profiles, `agentcore_config.json`, or generated evaluation data;
-4. run `python scripts/validate_portfolio.py`.
+Before publishing screenshots or logs:
 
-The visible ticket and conversation data are fictional demonstration records.
+1. Remove AWS account IDs, resource ARNs, bucket names, request/session identifiers, and signed URLs.
+2. Never commit credentials, AWS profiles, local configuration, toolkit state, or generated test logs.
+3. Run `python scripts/validate_portfolio.py` from the repository root.
+
+The offline scan catches selected patterns; it is not a guarantee that every secret or personal detail will be detected. Review new files before committing.
+
+Project 2 is an educational demo. Caller-supplied customer IDs are not authentication. A production service must derive identity from authentication, enforce backend authorization, make refunds durably idempotent, limit browser destinations, and minimize retained customer data. Local debug logs should be treated as private.
+

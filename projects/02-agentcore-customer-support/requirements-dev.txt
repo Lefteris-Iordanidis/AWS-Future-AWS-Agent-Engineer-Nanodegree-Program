@@ -1,0 +1,2 @@
+# Python project CLI only; do not install a second agentcore CLI.
+bedrock-agentcore-starter-toolkit==0.3.14

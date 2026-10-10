@@ -10,3 +10,20 @@ evaluation_results.jsonl
 *.tar.gz
 *.zip
 .DS_Store
+
+# Local AWS and AgentCore deployment state
+.aws/
+.bedrock_agentcore/
+.bedrock_agentcore.yaml
+.bedrock_agentcore.yml
+*_config.json
+deployment_record.json
+submission_manifest.json
+test_logs/
+runtime_app/
+runtime_zip_app/
+backups/
+*.pem
+*.key
+.envrc
+

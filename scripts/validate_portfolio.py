@@ -55,14 +55,17 @@ def validate_tests() -> None:
 
 def scan_public_text() -> None:
     patterns = {
-        "AWS access key": re.compile(r"AKIA[0-9A-Z]{16}"),
+        "AWS access key": re.compile(r"(?:AKIA|ASIA)[0-9A-Z]{16}"),
         "AWS account ID": re.compile(r"(?<!\d)\d{12}(?!\d)"),
         "AWS ARN": re.compile("arn" + ":aws:", re.IGNORECASE),
-        "S3 URI": re.compile("s3" + "://", re.IGNORECASE),
+        # A bare scheme in a response validator is not a bucket disclosure.
+        "S3 URI": re.compile("s3" + r"://[a-z0-9][a-z0-9.-]+", re.IGNORECASE),
     }
     suffixes = {".md", ".txt", ".json", ".py", ".yml", ".yaml"}
 
     for path in ROOT.rglob("*"):
+        if set(path.relative_to(ROOT).parts) & {".git", ".venv", "venv", "__pycache__"}:
+            continue
         if not path.is_file() or path.suffix.lower() not in suffixes:
             continue
         content = path.read_text(encoding="utf-8")
@@ -75,8 +78,11 @@ def main() -> None:
     validate_faq()
     validate_tests()
     scan_public_text()
+    from validate_project2 import validate_project2
+    validate_project2(ROOT)
     print("PASS: prompt, FAQ, tests, and public-text secret scan")
 
 
 if __name__ == "__main__":
     main()
+

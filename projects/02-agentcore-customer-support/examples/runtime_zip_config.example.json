@@ -1,0 +1,4 @@
+{
+  "agent_arn": "<your-runtime-arn>",
+  "region": "us-east-1"
+}
