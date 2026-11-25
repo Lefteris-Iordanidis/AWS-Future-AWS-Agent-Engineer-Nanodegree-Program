@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ast
 import json
 import re
 from pathlib import Path
@@ -73,6 +74,26 @@ def scan_public_text() -> None:
             require(not pattern.search(content), f"possible {label} in {path.relative_to(ROOT)}")
 
 
+def validate_project3() -> None:
+    project = ROOT / "projects" / "03-novamart-multi-agent-rag"
+    for name in ("implementation.py", "build_runtime.py", "verify_guardrail.py"):
+        compile((project / name).read_text(encoding="utf-8"), name, "exec")
+
+    # Compare the recorded live outcomes with the five cases a reader can rerun.
+    guardrail_script = ast.parse((project / "verify_guardrail.py").read_text(encoding="utf-8"))
+    cases = next(node.value for node in guardrail_script.body if isinstance(node, ast.Assign)
+                 and isinstance(node.targets[0], ast.Name) and node.targets[0].id == "CASES")
+    expected = [
+        (label, direction, "GUARDRAIL_INTERVENED" if topic else "NONE", topic)
+        for label, direction, _, topic in ast.literal_eval(cases)
+    ]
+    evidence = json.loads((project / "evidence" / "results.json").read_text(encoding="utf-8"))
+    recorded = [(case["case"], case["direction"], case["action"], case.get("topic"))
+                for case in evidence["guardrail_version_2"]]
+    require(recorded == expected, "Project 3 guardrail cases and recorded outcomes differ")
+    print("PASS: Project 3 Python syntax and guardrail evidence consistency")
+
+
 def main() -> None:
     validate_prompt()
     validate_faq()
@@ -80,6 +101,7 @@ def main() -> None:
     scan_public_text()
     from validate_project2 import validate_project2
     validate_project2(ROOT)
+    validate_project3()
     print("PASS: prompt, FAQ, tests, and public-text secret scan")
 
 

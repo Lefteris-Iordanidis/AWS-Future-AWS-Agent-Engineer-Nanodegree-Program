@@ -4,6 +4,8 @@ This public portfolio excludes AWS credentials, real account and resource identi
 
 Project 1 publishes its behaviour contract and pseudocode, with the deployed prompt omitted. Project 2 publishes the completed educational agent implementation, including its demo system prompt, and example configuration with placeholders. Supplied course backend infrastructure and product-catalog files are not redistributed.
 
+Project 3 publishes the NovaMart agent implementation, five guardrail checks, a summary of the lab results and a diagram of the routing logic. Its build script integrates the implementation into a local copy of the Udacity starter. Each deployment supplies its own resource configuration.
+
 Before publishing screenshots or logs:
 
 1. Remove AWS account IDs, resource ARNs, bucket names, request/session identifiers, and signed URLs.

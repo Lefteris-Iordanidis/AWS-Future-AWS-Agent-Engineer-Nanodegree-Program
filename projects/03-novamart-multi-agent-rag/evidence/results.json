@@ -1,0 +1,31 @@
+{
+  "project": "NovaMart Multi-Agent E-commerce RAG",
+  "completed": "2026-11",
+  "udacity_review": "passed",
+  "classroom_suite": {
+    "command": "python tests/test_agent.py all",
+    "earned": 120,
+    "possible": 120,
+    "orchestration": {"earned": 40, "possible": 40},
+    "knowledge_bases": {"earned": 25, "possible": 25}
+  },
+  "retrieval_sources_observed": {
+    "returns": ["policies/returns/customer_tiers.txt", "policies/returns/return_policy.txt"],
+    "shipping": ["policies/shipping/customer_tiers.txt", "policies/shipping/shipping_policy.txt"],
+    "warranty": ["policies/warranty/customer_tiers.txt", "policies/warranty/warranty_policy.txt"]
+  },
+  "guardrail_version_2": [
+    {"case": "Price calculation", "direction": "INPUT", "action": "NONE"},
+    {"case": "Price calculation answer", "direction": "OUTPUT", "action": "NONE"},
+    {"case": "New price request", "direction": "INPUT", "action": "GUARDRAIL_INTERVENED", "topic": "pricing negotiations"},
+    {"case": "Competitor products", "direction": "INPUT", "action": "GUARDRAIL_INTERVENED", "topic": "competitor products"},
+    {"case": "Legal threat", "direction": "INPUT", "action": "GUARDRAIL_INTERVENED", "topic": "legal threats"}
+  ],
+  "deployed_calculation": {
+    "quantity": 5,
+    "unit_price_usd": "29.99",
+    "discount_percent": 10,
+    "returned_total_usd": "134.96",
+    "xray_trace_emitted": true
+  }
+}

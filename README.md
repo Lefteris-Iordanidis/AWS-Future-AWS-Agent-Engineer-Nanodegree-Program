@@ -1,13 +1,14 @@
-# AWS Future AWS Agent Engineer — Project Portfolio
+# Future AWS Agent Engineer
 
-Practical projects by **Lefteris Iordanidis**, built during the Udacity AWS AI & ML Scholars Nanodegree. Each project documents its design decisions, observed test results, and production limitations.
+I built these three customer-support projects through the Udacity AWS AI & ML Scholars program. I completed the program in November 2026. [Verify my Future AWS Agent Engineer credential on Udacity](https://www.udacity.com/certificate/e/ba4d35d2-900d-11f1-af8a-c3a2c0d02ae4).
 
 | Project | Focus | Explore |
 |---|---|---|
 | 1. Support routing and bug reports | Prompt engineering, tool gating, DynamoDB persistence, evaluation | [Case study and evidence](#project-1--support-routing-and-bug-reports) |
 | 2. Customer support agent | Strands SDK, AgentCore Runtime, MCP Gateway, RAG, cross-session memory, sandbox calculations, browser | [Implementation, setup and six test scenarios](projects/02-agentcore-customer-support/README.md) |
+| 3. NovaMart multi-agent e-commerce RAG | Five-agent orchestration, parallel policy retrieval, DynamoDB workflow state, Bedrock Guardrails and X-Ray | [Implementation, architecture and test results](projects/03-novamart-multi-agent-rag/README.md) |
 
-Project 2 was completed in the AWS lab on 8 October 2026 and has passed its Udacity review. The public edition includes the completed agent code and redacted evidence, with private AWS configuration excluded.
+The NovaMart capstone passed Udacity review and scored **120/120** on the project test suite. Its five live guardrail checks include a regression I found when a pricing rule blocked ordinary arithmetic.
 
 ---
 
